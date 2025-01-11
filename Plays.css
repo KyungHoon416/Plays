@@ -2,7 +2,6 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    line-height: 1.5;
   }
   
   a {
@@ -19,14 +18,39 @@ body {
   input[type="checkbox"] {
     margin-right: 5px;
   }
+
+
+
   
   /* 상단 배너와 헤더 간 간격 줄이기 */
     .top-banner {
     background-color: black;
     color: white;
     font-size: 0.9rem;
-    padding: 5px 15px; /* 배너 여백을 줄여서 로고와 더 가까워짐 */
+    padding: 10px 15px; /* 배너 여백을 줄여서 로고와 더 가까워짐 */
+    text-align: center; /* 텍스트를 수평 중앙 정렬 */
+    line-height: 40px; /* 배너 높이에 맞춰 수직 중앙 정렬 (예: 40px) */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* 부드러운 전환 효과 */
+  
     }
+
+    /* 배너 숨기기 애니메이션 */
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  }
+
+    @media (min-width: 600px) {
+      .top-banner {
+          padding: 15px 15px; /* 큰 화면에서 패딩 증가 */
+      }
+  }
   
   .banner-content {
     display: flex;
@@ -47,12 +71,16 @@ body {
   }
   
 /* 헤더의 padding 조정 */
-    .header {
+  .header {
+    
     background-color: white;
-    border-bottom: 1px solid #ddd;
+    align-items: center;
+    justify-content: space-between;
     height: 80px;
-    padding-top: 5px; /* 헤더 상단 여백을 줄여서 배너와 더 가까워짐 */
-    }
+    padding-top: 0px; /* 헤더 상단 여백을 줄여서 배너와 더 가까워짐 */
+    padding: 10px 20px; /* 좌우 여백 */
+    
+  }
   
   /* 헤더 내부 요소 가운데 정렬 */
   .header-content {
@@ -62,6 +90,10 @@ body {
     height: 100%; /* 헤더 높이에 맞추기 */
     padding: 0 20px; /* 좌우 여백 */
   }
+
+  .logo {
+    font-size: 24px; /* 로고 글자 크기 */
+}
   
   /* 로고 크기 조정 */
   .logo h1 {
@@ -75,20 +107,32 @@ body {
   }
   
   /* 메뉴 크기 및 간격 */
-.menu {
-    display: flex;
+  .menu {
     gap: 20px; /* 메뉴 간격 */
+  
   }
   
   .menu a {
-    font-size: 1rem; /* 글씨 크기 */
+    text-decoration: none; /* 링크 밑줄 제거 */
+    color: #333; /* 링크 색상 */
+    font-size: 16px; /* 링크 글자 크기 */
   }
+
+  .menu ul {
+    list-style: none; /* 기본 리스트 스타일 제거 */
+    display: flex; /* 수평 정렬 */
+    margin: 0; /* 기본 마진 제거 */
+    padding: 0; /* 기본 패딩 제거 */
+}
+
+  .menu li {
+    margin-left: 20px; /* 각 메뉴 항목 간격 */
+}
   
   /* 오른쪽 사용자 액션 크기 */
-.user-actions {
+  .user-actions {
     display: flex;
     gap: 15px; /* 아이템 간격 */
-    align-items: center;
   }
   
   .user-actions a {
@@ -101,7 +145,7 @@ body {
   }
 
 /* 모바일(480px 이하) */
-@media (max-width: 480px) {
+  @media (max-width: 480px) {
     .top-banner {
         font-size: 0.8rem; /* 작은 화면에서는 배너 글씨 크기 줄이기 */
         padding: 8px 10px;
